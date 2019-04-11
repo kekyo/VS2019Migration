@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <!-- See also: https://docs.microsoft.com/en-us/dotnet/core/porting/wpf -->
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <UseWPF>true</UseWPF>
+
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AssemblyName>NewMigratedCoreWpfApp</AssemblyName>
+    <RootNamespace>NewMigratedCoreWpfApp</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ApplicationDefinition Include="..\OldWpfApp\App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\OldWpfApp\**\*.cs" Exclude="..\OldWpfApp\obj\**" />
+    <None Include="..\OldWpfApp\**\*.settings" />
+    <EmbeddedResource Include="..\OldWpfApp\**\*.resx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Include="..\OldWpfApp\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+</Project>
